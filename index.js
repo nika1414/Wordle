@@ -1,6 +1,3 @@
-// Import stylesheets
-import './style.css';
-
 const inputs = document.getElementById('inputs');
 const checkBtn = document.getElementById('checkBtn');
 const nextButton = document.getElementById('NextBtn');
