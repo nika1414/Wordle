@@ -4,7 +4,6 @@ import './style.css';
 const inputs = document.getElementById('inputs');
 const checkBtn = document.getElementById('checkBtn');
 const nextButton = document.getElementById('NextBtn');
-console.log(document.getElementById('NextBtn'));
 /* Creating function display with the fetched data from the API. */
 const words = [
   'მარილი',
@@ -17,18 +16,41 @@ const words = [
   'როიალი',
   'სპილო',
   'წყალი',
-  'ქუდი',
   'ტორტი',
   'საწოლი',
   'ჭაღი',
   'ჩარჩო',
   'სურათი',
   'კამერა',
-  'გიტარა',
+];
+const hintta = [
+  { name: 'მარილი', descr: 'მლაშე' },
+  { name: 'შაქარი', descr: 'ტკბილი' },
+  { name: 'გონება', descr: 'აზროვნება' },
+  { name: 'კეპი', descr: 'თავსაფარი' },
+  { name: 'ლიმონი', descr: 'მჟავე' },
+  { name: 'სკამი', descr: 'დასაჯდომი' },
+  { name: 'მაგიდა', descr: 'თეფშების დასალაგებელი' },
+  { name: 'როიალი', descr: 'კლავიშებიანი ინსტრუმენტი' },
+  { name: 'სპილო', descr: 'ხორთუმიანი ცხოველი' },
+  { name: 'წყალი', descr: 'მომწყურდა' },
+  { name: 'ტორტი', descr: 'ყველაზე ტკბილი საჭმელი დაბდღეზე' },
+  { name: 'საწოლი', descr: 'საძინებელი' },
+  { name: 'ჭაღი', descr: 'CU-მ სახელი ამით გაითქვა' },
+  { name: 'ჩარჩო', descr: 'look at this graaph' },
+  { name: 'სურათი', descr: 'სელფი' },
+  { name: 'კამერა', descr: 'cannon EOS 250D' },
 ];
 
 let word = words[Math.floor(Math.random() * words.length)];
 console.log(word);
+
+const hint = document.getElementById('hint');
+hintta.map((ht) => {
+  if (word == ht.name) {
+    hint.innerHTML = 'მინიშნება: ' + ht.descr;
+  }
+});
 
 /* looping through the given data from the API and displaying inputs of the length of the word. */
 
@@ -89,7 +111,6 @@ let cnt = 0;
 allInputs.forEach((element) => {
   element.onclick = () => {
     cnt = element.getAttribute('count');
-    console.log(element.value.length);
   };
   element.onkeyup = function (event) {
     if (element.value.length == 0) {
@@ -114,9 +135,6 @@ allInputs.forEach((element) => {
 });
 
 /* after clicking the "CHECK!" button, it will loop through the options and will push the values of inputs to the array 'wordArr' */
-const hint = document.getElementById('hint');
-
-hint.innerHTML = word;
 
 checkBtn.addEventListener('click', () => {
   hint.style.display = 'none';
@@ -126,7 +144,7 @@ checkBtn.addEventListener('click', () => {
   }
   //set the array's length to 0
 
-  /* if the given word from the API is equal to the word taken from the input, it'll display 'YOU WON!!!', if NOT it'll display 'WTF MAN.. WRONG.'*/
+  /* if the given word from the API is equal to the word taken from the input, it'll display 'YU WON!!!', if NOT it'll display 'WTF MAN.. WRONG.'*/
 
   console.log(nextButton);
   if (word === wordArr.join('')) {
